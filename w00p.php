@@ -4,8 +4,8 @@
     Plugin URI:   https://github.com/tommyskott/w00p
     Description:  WordPress Hooks
     Version:      1.0.0
-    Author:       tommyskott
-    Author URI:   https://tommyskott.se
+    Author:       Borgenfalk &amp; Skott
+    Author URI:   https://borgenfalk.se
     License:      MIT
     License URI:  https://github.com/tommyskott/w00p/blob/master/LICENSE
     Text Domain:  BS_CPT
@@ -16,6 +16,10 @@
   define('BS_CPT_TXT_DOMAIN', 'BS_CPT');
 
   register_activation_hook(__FILE__, function(){
+    // clear oembed caches
+    global $wpdb;
+    $wpdb->query( 'DELETE FROM `' . $wpdb->postmeta . '` WHERE `meta_key` LIKE "_oembed%"' );
+
     BS_CPT_init();
     flush_rewrite_rules();
   });
@@ -30,11 +34,14 @@
 
   function BS_CPT_init(){
     load_plugin_textdomain(BS_CPT_TXT_DOMAIN, false, basename(dirname(__FILE__)) . '/languages');
-
-    //if(is_admin()) require_once(dirname(__FILE__) . '/includes/BS_CPT_admin.php');
-
-    // Include CPTs
-    //require_once(dirname(__FILE__) . '/includes/BS_CPT_event.php');
   }
+
+  function BS_CPT_oembed($provider){
+    if(strpos($provider, 'vimeo.com') !== false){
+      $provider = remove_query_arg('dnt', $provider);
+    }
+    return $provider;
+  }
+  add_filter('oembed_fetch_url', 'BS_CPT_oembed');
 
 ?>
