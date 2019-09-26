@@ -45,5 +45,4 @@
     return $provider;
   }
   add_filter('oembed_fetch_url', 'BS_PLS_oembed');
-
 ?>
