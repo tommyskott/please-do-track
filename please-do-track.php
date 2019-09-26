@@ -8,12 +8,12 @@
     Author URI:   https://borgenfalk.se
     License:      MIT
     License URI:  https://github.com/tommyskott/please-do-track/blob/master/LICENSE
-    Text Domain:  BS_PLS
+    Text Domain:  bs_pls
     Domain Path:  /languages
   */
 
   defined('ABSPATH') or die('No script kiddies please!');
-  define('BS_PLS_TXT_DOMAIN', 'BS_PLS');
+  define('BS_PLS_TXT_DOMAIN', 'bs_pls');
 
   register_activation_hook(__FILE__, function(){
     if(is_admin()){
@@ -22,14 +22,14 @@
       $wpdb->query( 'DELETE FROM `' . $wpdb->postmeta . '` WHERE `meta_key` LIKE "_oembed%"' );
     }
 
-    BS_PLS_init();
+    bs_pls_init();
   });
 
   add_action('init', function(){
-    BS_PLS_init();
+    bs_pls_init();
   });
 
-  function BS_PLS_init(){
+  function bs_pls_init(){
     load_plugin_textdomain(BS_PLS_TXT_DOMAIN, false, basename(dirname(__FILE__)) . '/languages');
   }
 
