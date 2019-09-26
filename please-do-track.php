@@ -3,7 +3,7 @@
     Plugin Name:  Please Do Track!
     Plugin URI:   https://github.com/tommyskott/please-do-track
     Description:  A simple WordPress plugin for clearing WordPress oembed cache and disabling "Do Not Track" (dnt), on Vimeo embeds.
-    Version:      1.1.0
+    Version:      1.2.0
     Author:       Borgenfalk &amp; Skott
     Author URI:   https://borgenfalk.se
     License:      MIT
