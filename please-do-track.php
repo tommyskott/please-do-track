@@ -23,11 +23,6 @@
     }
 
     BS_PLS_init();
-    flush_rewrite_rules();
-  });
-
-  register_deactivation_hook(__FILE__, function(){
-    flush_rewrite_rules();
   });
 
   add_action('init', function(){
@@ -38,11 +33,10 @@
     load_plugin_textdomain(BS_PLS_TXT_DOMAIN, false, basename(dirname(__FILE__)) . '/languages');
   }
 
-  function BS_PLS_oembed($provider){
+  add_filter('oembed_fetch_url', function($provider){
     if(strpos($provider, 'vimeo.com') !== false){
       $provider = remove_query_arg('dnt', $provider);
     }
     return $provider;
-  }
-  add_filter('oembed_fetch_url', 'BS_PLS_oembed');
+  });
 ?>
