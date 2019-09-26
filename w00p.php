@@ -1,13 +1,13 @@
 <?php
   /*
-    Plugin Name:  w00p
-    Plugin URI:   https://github.com/tommyskott/w00p
-    Description:  WordPress Hooks
-    Version:      1.0.0
+    Plugin Name:  Please Do Track!
+    Plugin URI:   https://github.com/tommyskott/please-do-track
+    Description:  A simple WordPress plugin for clearing WordPress oembed cache and disabling "Do Not Track" (dnt), on Vimeo embeds.
+    Version:      1.1.0
     Author:       Borgenfalk &amp; Skott
     Author URI:   https://borgenfalk.se
     License:      MIT
-    License URI:  https://github.com/tommyskott/w00p/blob/master/LICENSE
+    License URI:  https://github.com/tommyskott/please-do-track/blob/master/LICENSE
     Text Domain:  BS_CPT
     Domain Path:  /languages
   */
